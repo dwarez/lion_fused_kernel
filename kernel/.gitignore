@@ -1,0 +1,15 @@
+build/
+_cmake_build/
+__pycache__/
+*.pyc
+
+.venv/
+*.egg-info/
+
+CMakeLists.txt
+compat.py
+cmake/
+metadata-*.json
+pyproject.toml
+setup.py
+uv.lock

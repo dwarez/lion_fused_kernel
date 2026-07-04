@@ -1,0 +1,61 @@
+[general]
+name = "lion"
+version = 1
+license = "Apache-2.0"
+backends = [
+    "cpu",
+    "cuda",
+    "metal",
+    "rocm",
+    "xpu",
+]
+
+[general.hub]
+repo-id = "kernels-test/lion"
+
+[torch]
+src = [
+    "torch-ext/torch_binding.cpp",
+    "torch-ext/torch_binding.h",
+]
+
+[kernel.lion_xpu]
+backend = "xpu"
+depends = ["torch"]
+src = ["lion_xpu/lion.cpp"]
+
+[kernel.lion_metal]
+backend = "metal"
+depends = ["torch"]
+src = [
+    "lion_metal/lion.mm",
+    "lion_metal/lion.metal",
+    "lion_metal/common.h",
+]
+
+[kernel.lion_rocm]
+backend = "rocm"
+depends = ["torch"]
+rocm-archs = [
+    "gfx906",
+    "gfx908",
+    "gfx90a",
+    "gfx942",
+    "gfx950",
+    "gfx1030",
+    "gfx1100",
+    "gfx1101",
+    "gfx1200",
+    "gfx1201",
+]
+src = ["lion_cuda/lion.cu"]
+
+[kernel.lion_cpu]
+backend = "cpu"
+depends = ["torch"]
+src = ["lion_cpu/lion_cpu.cpp"]
+
+[kernel.lion]
+backend = "cuda"
+depends = ["torch"]
+src = ["lion_cuda/lion.cu"]
