@@ -1,3 +1,5 @@
+[Read about it here](https://dwarez.dev/blog/fused-lion-optimizer-kernel)
+
 # Lion fused kernel
 
 Fused fp32 Lion optimizer step built with Hugging Face `kernels`.
